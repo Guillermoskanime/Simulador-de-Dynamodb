@@ -1,0 +1,138 @@
+<% include partials/_header %>
+
+<div class="container">
+
+
+
+  <div class="row">
+    <!--FORM-->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <form action="/add" method="post">
+
+            <div class="form-group">
+              <input class="form-control" type="Number" name="cisnumber" placeholder="cisnumber">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="Number" name="account" placeholder="account">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="Number" name="accountMasked" placeholder="accountMasked">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="clientName" placeholder="clientName">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="Number" name="company" placeholder="company">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="product" placeholder="product">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="Number" name="status" placeholder="status">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="Number" name="subProduct" placeholder="subProduct">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="tokenTdc" placeholder="tokenTdc">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control"  type="date"  name="updatedAt" placeholder="updatedAt">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="uuid" placeholder="uuid ">
+            </div>
+
+            <div class="form-group">
+              <textarea class="form-control" name="description" cols="80" placeholder="Añade una Deescripcion"
+                ></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="Enviar">
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <!-- LIST -->
+      <div class="col-md-7">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>cis</th>
+              <th>account</th>
+              <th>accountMasked</th>
+              <th>clientName</th>
+              <th>company</th>
+              <th>product</th>
+              <th>status</th>
+              <th>subProduct</th>
+              <th>tokenTdc</th>
+              <th>updatedAt</th>
+              <th>uuid</th>
+              <th>description</th>
+              <th>Operacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i < tasks.length; i++) { %>
+              <tr>
+                <td><%= i + 1 %></td>
+                <td><%= tasks[i].cisnumber %></td>
+                <td><%= tasks[i].account %></td>
+                <td><%= tasks[i].accountMasked %></td>
+                <td><%= tasks[i].clientName %></td>
+                <td><%= tasks[i].company %></td>
+                <td><%= tasks[i].product %></td>
+                <td><%= tasks[i].status %></td>
+                <td><%= tasks[i].subProduct %></td>
+                <td><%= tasks[i].tokenTdc %></td>
+                <td><%= tasks[i].updatedAt %></td>
+                <td><%= tasks[i].uuid %></td>
+                <td><%= tasks[i].description %></td>
+                <td>
+                  <a
+                    class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+                    href="/turn/<%= tasks[i]._id %>">Echo</a>
+                  <a href="/delete/<%= tasks[i]._id %>"
+                    class="btn btn-danger">
+                    Eliminar
+                  </a>
+                  <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">
+                    Editar
+                  </a>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  
+  </div>
+  
+
+</div>
+
+
